@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ShareSaver.MainPage">
+    <Grid>
+        <StackLayout>
+            <Label x:Name="sharedText"/>
+            <Button Text="Clear saved" Clicked="ClearSavedData"/>
+            <Label x:Name="copiedText"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Show clipboard" HorizontalOptions="FillAndExpand" Clicked="ShowClipboardClicked"/>
+                <Button Text="Save text" HorizontalOptions="FillAndExpand" Clicked="SaveClipboardClicked"/>
+            </StackLayout>
+            <Button Text="Show saved" Clicked="ShowSavedClicked"/>
+            <ListView x:Name="savedListView" ItemTapped="ItemTapped" SelectionMode="None"/>
+        </StackLayout>
+        <ActivityIndicator x:Name="activityIndicator" 
+                               WidthRequest="100" HeightRequest="100" 
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+    </Grid>
+</ContentPage>
