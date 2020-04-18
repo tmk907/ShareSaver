@@ -13,6 +13,7 @@ namespace ShareSaver
         public FileHelper(string filePath)
         {
             _filePath = filePath;
+            CreateFile();
         }
 
         public async Task<List<string>> ReadAll()
@@ -33,6 +34,14 @@ namespace ShareSaver
             using (var streamWriter = File.AppendText(_filePath))
             {
                 streamWriter.WriteLine(text);
+            }
+        }
+
+        private void CreateFile()
+        {
+            if (!File.Exists(_filePath))
+            {
+                File.Create(_filePath);
             }
         }
     }

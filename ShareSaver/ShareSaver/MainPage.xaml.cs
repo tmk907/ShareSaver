@@ -21,6 +21,7 @@ namespace ShareSaver
             base.OnAppearing();
             sharedText.Text = App.LastSharedText;
             await Xamarin.Essentials.Permissions.RequestAsync<Xamarin.Essentials.Permissions.StorageWrite>();
+            ShowClipboardClicked(null, null);
         }
 
         private async void ClearSavedData(object sender, EventArgs e)
@@ -50,7 +51,9 @@ namespace ShareSaver
         private async void ShowSavedClicked(object sender, EventArgs e)
         {
             ShowActivityIndicator();
-            savedListView.ItemsSource = await _fileHelper.ReadAll();
+            var list = await _fileHelper.ReadAll();
+            list.Reverse();
+            savedListView.ItemsSource = list;
             HideActivityIndicator();
         }
 
